@@ -2,6 +2,8 @@ package main
 
 import (
 	"fmt"
+	"strconv"
+	"strings"
 )
 
 func Swap(sli []int, index int) {
@@ -28,15 +30,18 @@ func BubbleSort(sli []int) {
 
 func main() {
 	num_slice := make([]int, 0, 10)
-	var size int
-	fmt.Print("Enter the number of integers that will be sorted (max 10)> ")
-	fmt.Scanf("%d", &size)
-	if size < 10 {
-		for i := 0; i < size; i++ {
-			var num int
-			fmt.Print("Type a number> ")
-			fmt.Scanf("%d", &num)
-			num_slice = append(num_slice, num)
+	var integers string
+	fmt.Print("Enter integers to be sorted separated by a comma i.e. 2,45,67> ")
+	fmt.Scanf("%s", &integers)
+	nums := strings.Split(integers, ",")
+	if len(nums) < 10 {
+		for _, item := range nums {
+			i, err := strconv.Atoi(item)
+			if err != nil {
+				fmt.Println("Error")
+				break
+			}
+			num_slice = append(num_slice, i)
 		}
 		BubbleSort(num_slice)
 		fmt.Println(num_slice)
