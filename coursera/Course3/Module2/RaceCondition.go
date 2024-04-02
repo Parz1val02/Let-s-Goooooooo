@@ -25,3 +25,12 @@ func writeText(newOrder string) {
 		time.Sleep(10 * time.Millisecond)
 	}
 }
+
+/*
+Explanation>
+A race condition is a situation in which the outcome of a program depends on non-deterministic interleaving.
+In other words, it happens when two or more threads communicate by accessing shared data and try to change it at the same time.
+Because the scheduler swaps between threads at any time, the order in which the threads will attempt to access the shared data is unknown.
+Therefore, the end result of the program is unpredictable.
+In Go, two goroutines attempt to execute the same function with different arguments at almost the same time, generating a non-deterministic outcome.
+*/
